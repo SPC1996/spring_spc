@@ -27,5 +27,6 @@ out/
 
 # Mac
 .DS_Store
-springframework/src/main/resources/
-springframework/src/test/
+
+#log
+log/
