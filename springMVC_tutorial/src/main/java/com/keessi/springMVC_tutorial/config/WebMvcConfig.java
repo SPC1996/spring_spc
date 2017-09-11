@@ -1,13 +1,13 @@
 package com.keessi.springMVC_tutorial.config;
 
+import com.keessi.springMVC_tutorial.interceptor.AdminInterceptor;
+import com.keessi.springMVC_tutorial.interceptor.LogInterceptor;
+import com.keessi.springMVC_tutorial.interceptor.OldLoginInterceptor;
+import com.keessi.springMVC_tutorial.interceptor.UrlLocaleInterceptor;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.*;
+import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 
-import java.util.List;
 
 @Configuration
 @EnableWebMvc
@@ -22,5 +22,18 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
         configurer.enable();
+    }
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(new LogInterceptor());
+        registry.addInterceptor(new OldLoginInterceptor())
+                .addPathPatterns("/admin/oldLogin");
+        registry.addInterceptor(new AdminInterceptor())
+                .addPathPatterns("/admin/*");
+//        LocaleChangeInterceptor localeInterceptor = new LocaleChangeInterceptor();
+//        localeInterceptor.setParamName("lang");
+        UrlLocaleInterceptor localeInterceptor = new UrlLocaleInterceptor();
+        registry.addInterceptor(localeInterceptor).addPathPatterns("/en/*", "/zh/*");
     }
 }
