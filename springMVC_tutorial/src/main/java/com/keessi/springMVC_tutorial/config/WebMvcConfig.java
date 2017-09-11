@@ -14,9 +14,9 @@ import java.util.List;
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/css/**").addResourceLocations("/css/").setCachePeriod(300);
-        registry.addResourceHandler("/img/**").addResourceLocations("/img/").setCachePeriod(300);
-        registry.addResourceHandler("/js/").addResourceLocations("/js/").setCachePeriod(300);
+        registry.addResourceHandler("/css/**").addResourceLocations("/WEB-INF/resource/css/").setCachePeriod(300);
+        registry.addResourceHandler("/img/**").addResourceLocations("/WEB-INF/resource/img/").setCachePeriod(300);
+        registry.addResourceHandler("/js/**").addResourceLocations("/js/").setCachePeriod(300);
     }
 
     @Override
