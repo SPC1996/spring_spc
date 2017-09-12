@@ -6,8 +6,6 @@ import com.keessi.springMVC_tutorial.interceptor.OldLoginInterceptor;
 import com.keessi.springMVC_tutorial.interceptor.UrlLocaleInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.*;
-import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
-
 
 @Configuration
 @EnableWebMvc
