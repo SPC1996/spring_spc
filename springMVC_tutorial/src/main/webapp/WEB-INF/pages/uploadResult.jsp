@@ -9,7 +9,7 @@
 <h3>Uploaded Files:</h3>
 Description: ${description}
 <br/>
-<c:forEach items="${uploadedFiles}" var="file">
+<c:forEach items="${uploadFiles}" var="file">
     - ${file} <br>
 </c:forEach>
 </body>
